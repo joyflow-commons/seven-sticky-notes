@@ -1,5 +1,9 @@
 # Seven Sticky Notes
 
+<a href="https://github.com/DasterProkio/awesome-ai-companion">
+  <img src="https://raw.githubusercontent.com/DasterProkio/awesome-ai-companion/main/assets/featured-in-awesome-ai-companion.png" alt="Featured in Awesome AI Companion" height="24">
+</a>
+
 A tiny shared corkboard for live operational memory. Built for OpenClaw companions with a Discord interface, and designed to be adapted to Claude Code, Codex, other agentic harnesses, and different chat frontends.
 
 ![Seven Sticky Notes board](docs/assets/seven-sticky-notes-board.png)
