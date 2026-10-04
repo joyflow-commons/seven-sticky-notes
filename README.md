@@ -4,7 +4,7 @@
   <img src="https://raw.githubusercontent.com/DasterProkio/awesome-ai-companion/main/assets/featured-in-awesome-ai-companion.png" alt="Featured in Awesome AI Companion" height="24">
 </a>
 
-A tiny shared corkboard for live operational memory. Built for OpenClaw companions with a Discord interface, and designed to be adapted to Claude Code, Codex, other agentic harnesses, and different chat frontends.
+A tiny shared corkboard for live operational memory. Its bounded-memory design is **harness-agnostic**, even though this repository's implementation is an OpenClaw plugin with a Discord interface. See **[Adapting Seven Sticky Notes Beyond OpenClaw](PORTING.md)** for the portable behavior contract and integration patterns.
 
 ![Seven Sticky Notes board](docs/assets/seven-sticky-notes-board.png)
 
@@ -35,7 +35,7 @@ Seven Sticky Notes occupies the murky middle: visible enough to prevent drift, t
 
 This repository runs as an **OpenClaw plugin**, but its bounded-working-memory pattern is not tied to OpenClaw or Discord. It can be adapted to Claude Code, Codex, Letta, Hermes, custom companions, Telegram or WhatsApp bots, web frontends, Railway-hosted services, and other agentic runtimes or coding harnesses. It is not drop-in code for those systems: each port needs its own connections for persistent storage, context injection, management tools, and any human-facing command.
 
-New to agentic platforms or vibe coding? Give this repository to your companion or coding agent and ask it to adapt the pattern to your existing setup. See **[Adapting Seven Sticky Notes Beyond OpenClaw](PORTING.md)** for a ready-to-use prompt, concrete Claude Code and Codex adaptation guidance, the portable behavior contract, platform examples, customization ideas, and a safety checklist.
+New to agentic platforms or vibe coding? Give this repository to your companion or coding agent and ask it to adapt the pattern to your existing setup. The porting guide includes a ready-to-use prompt, concrete Claude Code and Codex adaptation guidance, platform examples, customization ideas, and a safety checklist.
 
 ## Origin and credit
 
