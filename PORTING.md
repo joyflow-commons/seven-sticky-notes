@@ -4,8 +4,8 @@ Seven Sticky Notes is currently built and tested as an **OpenClaw plugin** with 
 
 The underlying idea is portable across companion runtimes, coding-agent CLIs, and chat frontends. It is a small bounded layer of working memory:
 
-- keep no more than seven active notes on a shared corkboard;
-- place the three most pressing notes into the companion's context each turn;
+- keep a deliberately small, configured number of active notes on a shared corkboard;
+- place a smaller foreground set into the companion's context each turn;
 - let the companion or human create, revise, close, and inspect notes;
 - expire short-lived notes automatically;
 - keep temporary operational state separate from durable autobiographical memory.
@@ -14,7 +14,7 @@ If your companion runs somewhere other than OpenClaw, you can give this reposito
 
 ## A plain-language prompt you can use
 
-> I want a small sticky-note memory layer like the one in this repository. Please inspect my current companion setup and adapt the design rather than assuming the OpenClaw plugin will run unchanged. Store up to seven active notes, inject the top three into the model's context, let us list and manage all seven, and keep this temporary state separate from long-term memory. Before changing anything, identify where my system stores persistent state, builds model prompts, registers tools, and handles chat commands. Preserve my existing security and privacy boundaries.
+> I want a small sticky-note memory layer like the one in this repository. Please inspect my current companion setup and adapt the design rather than assuming the OpenClaw plugin will run unchanged. Keep a deliberately small active board, inject only its most pressing notes into the model's context, let us list and manage the full board, and keep this temporary state separate from long-term memory. The shipped plugin defaults to five active notes and three foregrounded notes; Seven's example configuration uses seven and three. Before changing anything, identify where my system stores persistent state, builds model prompts, registers tools, and handles chat commands. Preserve my existing security and privacy boundaries.
 
 ## What another system needs
 
@@ -38,8 +38,8 @@ Discord is therefore **not required**. It is one window onto the corkboard, not 
 
 An implementation should preserve these semantics even when its code looks completely different:
 
-- Maximum active notes: **7**
-- Notes inserted into each prompt: **3**
+- Maximum active notes: configurable as `maxActive`; the shipped default is **5**, while Seven's example configuration uses **7**
+- Notes inserted into each prompt: configurable as `maxInjected`; the shipped default is **3**
 - Sorting order:
   1. overdue first;
   2. nearest due date;
@@ -57,9 +57,9 @@ An implementation should preserve these semantics even when its code looks compl
 
 The sorting is mechanical, but the meaning is companion-managed: the companion decides what deserves a note, priority, due date, revision, or closure. A household may choose to let the human manage more of that process instead.
 
-## Remembering the other four notes
+## Remembering notes outside the foreground
 
-Only three notes are foregrounded each turn. The remaining notes still exist on the board, but each household should choose how they resurface:
+With the shipped defaults, three of up to five notes are foregrounded each turn. With Seven's example configuration, that becomes three of up to seven. The remaining notes still exist on the board, but each household should choose how they resurface:
 
 - the human checks the full board periodically;
 - the companion inspects it during occasional heartbeats;
@@ -99,7 +99,7 @@ Replace `/sticky` with the interface the channel supports, such as a bot command
 
 ### A web companion
 
-Render the seven notes as cards, pinned notes, or a small sidebar. UI controls can call the same create, update, close, and delete operations used by the model.
+Render the bounded board as cards, pinned notes, or a small sidebar. UI controls can call the same create, update, close, and delete operations used by the model.
 
 ## Customization ideas
 
@@ -114,7 +114,7 @@ Good adaptations may customize:
 - storage backend;
 - whether humans, companions, or both may edit notes.
 
-Seven active notes and three foregrounded notes are intentional defaults: three fit comfortably in immediate attention, while seven provide useful external working memory without becoming a backlog system. Change them if your use case genuinely calls for it, not merely because larger numbers are available.
+The shipped defaults are five active notes and three foregrounded notes. Seven's household uses a seven-note active cap with the same three-note foreground. Both keep immediate attention smaller than the inspectable board. Change them if your use case genuinely calls for it, not merely because larger numbers are available.
 
 ## Safety checklist for an adaptation
 

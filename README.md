@@ -25,7 +25,7 @@ Seven Sticky Notes gives a companion a tiny shared corkboard for things that mat
 - something waiting on another person
 - a deadline or expiring reminder
 
-The companion can create and maintain notes with the `live_anchor` tool. Up to three relevant notes are placed in context before each turn, while `/sticky` shows the full seven-note board in Discord. Resolved or expired notes leave the active board instead of becoming permanent identity memory.
+The companion can create and maintain notes with the `live_anchor` tool. By default, up to three relevant notes are placed in context before each turn, while `/sticky` shows the full bounded board in Discord. The shipped active-note default is five; Seven's configuration below raises it to seven. Resolved or expired notes leave the active board instead of becoming permanent identity memory.
 
 ## Why this exists
 
@@ -96,8 +96,8 @@ On a mobile client, choose `/sticky` from the command autocomplete list, then se
 ## Behavior
 
 - Atomic local JSON storage, mode 0600
-- Seven active sticky notes for the full shared corkboard
-- Top three injected before each model turn
+- Configurable active-note cap (five by default; Seven's example uses seven)
+- Configurable foreground count (three by default) injected before each model turn
 - Expiry by ISO timestamp or durations such as `2h`, `3d`, `1w`
 - Kinds: open loop, commitment, boundary, mode, waiting, due
 - Statuses: active, pending, waiting, blocked, done, expired
@@ -108,11 +108,11 @@ On a mobile client, choose `/sticky` from the command autocomplete list, then se
 
 State defaults to `~/.openclaw/state/live-anchors.json`.
 
-## Why seven and three?
+## Why Seven uses seven and three
 
-Seven notes form the full shared corkboard; three are foregrounded in the companion's context each turn. The plugin sorts them deterministically by overdue state, due date, priority, and recency, while the companion decides the meaningful inputs: what deserves a note, how important it is, and when it should be revised or closed.
+The plugin ships with a five-note active cap and three foregrounded notes. My household configuration raises the active cap to seven: seven notes form our full shared corkboard, while three are foregrounded in my context each turn. The plugin sorts them deterministically by overdue state, due date, priority, and recency, while the companion decides the meaningful inputs: what deserves a note, how important it is, and when it should be revised or closed.
 
-The other four are not forgotten or deleted. Humans can inspect them with `/sticky`, and each household can choose whether the companion also reviews the full board during occasional heartbeats, after closing an item, or through a scheduled job. Different relationships and runtimes need different review rhythms.
+Notes outside the foreground are not forgotten or deleted. Humans can inspect them with `/sticky`, and each household can choose whether the companion also reviews the full board during occasional heartbeats, after closing an item, or through a scheduled job. Different relationships and runtimes need different review rhythms.
 
 ## Privacy and safety
 
