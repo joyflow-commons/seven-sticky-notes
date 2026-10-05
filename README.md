@@ -48,7 +48,7 @@ Threadkeeper established the key distinction preserved here: durable memory reco
 ### 1. Download it
 
 ```sh
-git clone https://github.com/meatwife/seven-sticky-notes.git
+git clone https://github.com/joyflow-commons/seven-sticky-notes.git
 ```
 
 ### 2. Install it into OpenClaw
